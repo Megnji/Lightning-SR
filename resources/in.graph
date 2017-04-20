@@ -1,0 +1,29 @@
+#Nodes
+7
+Nodes(Index x y)
+N1 0 0
+N2 2 2
+N3 2 0
+N4 2 -2
+N5 3 -4
+N6 4 0
+N7 6 0
+
+#Edges
+9
+Edges(Index source destination weight bandwidth delay)
+E1 1 2 10 100 6
+E2 1 3 20 80 7
+E3 1 4 30 90 21
+E4 1 5 30 120 3
+E5 2 6 30 110 7
+E6 3 6 20 120 33
+E7 4 6 10 60 49
+E8 6 7 10 200 5
+E9 5 7 50 300 1
+
+#Paths
+2
+Paths(Index Sequence bandwidth)
+P1 1->2->7 80
+P2 1->6->7 80

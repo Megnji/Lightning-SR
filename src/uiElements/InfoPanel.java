@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import bean.Connection.ConnectionType;
 
 /**
  * Right panel that used to display the informations
@@ -198,26 +197,6 @@ public class InfoPanel extends JPanel implements ItemListener,ActionListener{
 		label5.setText("");
 	}
 	
-	public static void setClickInfo(int i, int j, ConnectionType type, double weight){
-		itemClicked.setText("edge clicked");
-		label1.setText("Starting vertice: "+ i);
-		label2.setText("Ending vertice: "+ j);
-		String t = "Type: ";
-		if (type == ConnectionType.embedding){
-			t = t+ "Embedding";
-			weight = 1.0;
-		}else if (type == ConnectionType.host){
-			t = t+ "Hosting";
-			label4.setText("");
-		}else {
-			t = t+ "Embedding";
-			weight = 1.0;
-			label4.setText("");
-		}
-	    label3.setText(t);
-	    
-	    label5.setText("Weight: "+ weight);
-	}
 	public static void setGroupNum(int i){
 		if (i > 0){
 			label4.setText("Group edges number: "+ i);
@@ -248,53 +227,11 @@ public class InfoPanel extends JPanel implements ItemListener,ActionListener{
 	}
 	@Override
 	public void itemStateChanged(ItemEvent e) {
-		if (e.getStateChange() == ItemEvent.SELECTED && e.getSource() == box1){
-			
-		}else if (e.getStateChange() == ItemEvent.DESELECTED && e.getSource() == box1){
-			
-		}else if (e.getStateChange() == ItemEvent.SELECTED && e.getSource() == InfoPanel.box2){
-			PlotPanel.setHostDraw(true);
-			MainFrame.renewPlotPanel();
-		}else if (e.getStateChange() == ItemEvent.DESELECTED && e.getSource() == InfoPanel.box2){
-			PlotPanel.setHostDraw(false);
-			MainFrame.renewPlotPanel();
-		}
 		
 	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == zoomin){
-			zoomout.setEnabled(true);
-			double h,v;
-			h = MainFrame.getHonPosition();
-			v = MainFrame.getVerPosition();
-			int currentZoomRate = PlotPanel.getZoomRate();
-			if (currentZoomRate < 5){
-				currentZoomRate++;
-				PlotPanel.setZoomeRate(currentZoomRate);
-				System.out.println("Current zoom rate: "+ currentZoomRate);
-			}
-			if (currentZoomRate == 5){
-				zoomin.setEnabled(false);
-			}
-			MainFrame.renewPlotPanel();
-			MainFrame.setScrollBar(v, h);
-		}else if (e.getSource() == zoomout){
-			double h,v;
-			h = MainFrame.getHonPosition();
-			v = MainFrame.getVerPosition();
-			int currentZoomRate = PlotPanel.getZoomRate();
-			if (currentZoomRate > 1){
-				zoomin.setEnabled(true);
-				currentZoomRate--;
-				PlotPanel.setZoomeRate(currentZoomRate);
-				System.out.println("Current zoom rate: "+ currentZoomRate);
-			}
-            if (currentZoomRate == 1){
-				zoomout.setEnabled(false);
-			}
-			MainFrame.renewPlotPanel();
-			MainFrame.setScrollBar(v, h);
-		}
+
 	}
 }

@@ -2,8 +2,6 @@ package uiElements;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.event.MouseListener;
-import java.io.File;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
@@ -11,8 +9,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
-import actions.PlotPanelActionListener;
-import functions.LoadAlist;
 
 public class MainFrame {
 
@@ -41,9 +37,6 @@ public class MainFrame {
 	 */
 	public MainFrame() {
 		initialize();
-		//LoadPlotData.loadData("resources/host");
-		File f = new File("resources/dw2x.alist");
-		LoadAlist.loadAlistFile(f);
 	}
 
 	/**
@@ -54,8 +47,6 @@ public class MainFrame {
 		infoPanel = new InfoPanel();
 		infoPanel.setPreferredSize(new Dimension(500,800));
 		plotPanel = new PlotPanel();
-		MouseListener ml = new PlotPanelActionListener(plotPanel);
-		plotPanel.addMouseListener(ml);
 		plotPanel.setPreferredSize(new Dimension(1200,1200));
 		jsp = new JScrollPane(plotPanel);
 		jsp.setMinimumSize(new Dimension(500,500));
